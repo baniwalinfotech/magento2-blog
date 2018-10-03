@@ -1,0 +1,40 @@
+<?php $author = $block->getCurrentAuthor();
+if ($author): ?>
+<div class="baniwal-sidebar mpcss">
+	<div class="row">
+        <div class="author-name col-xs-12">
+            <h3><?php echo $author->getName() ?></h3>
+        </div>
+        <div class="author-image col-xs-12">
+            <img class="img-responsive"
+                 src="<?php echo ($author->getImage()) ? $block->resizeImage($author->getImage(), '135x', \Baniwal\Blog\Helper\Image::TEMPLATE_MEDIA_TYPE_AUTH) : $block->getDefaultAuthorImage(); ?>"
+                 alt="<?php echo $block->escapeHtml($author->getName()); ?>"/>
+        </div>
+        <div class="author-content col-xs-12">
+            <?php echo $block->getPageFilter(($author->getShortDescription())) ? $block->getPageFilter(($author->getShortDescription())) : 'No info'; ?>
+        </div>
+        <div class="author-social col-xs-12">
+            <?php if ($author->getFacebookLink()): ?>
+                <a href="<?php echo $author->getFacebookLink() ?>" target="_blank">
+                    <img class="img-responsive" src="<?php echo $this->getViewFileUrl('Baniwal_Blog::media/images/facebook.png') ?>" align="middle"
+                        alt="<?php echo $block->escapeHtml($author->getName()); ?>"/>
+                </a>
+            <?php else: ?>
+                <img class="img-responsive" src="<?php echo $this->getViewFileUrl('Baniwal_Blog::media/images/facebookoff.png') ?>" align="middle"
+                     alt="<?php echo $block->escapeHtml($author->getName()); ?>"/>
+            <?php endif; ?>
+            <?php if ($author->getTwitterLink()): ?>
+                <a href="<?php echo $author->getTwitterLink() ?>" target="_blank">
+                    <img class="img-responsive" src="<?php echo $this->getViewFileUrl('Baniwal_Blog::media/images/twitter.png') ?>" align="middle"
+                         alt="<?php echo $block->escapeHtml($author->getName()); ?>"/>
+                </a>
+            <?php else: ?>
+                <img class="img-responsive" src="<?php echo $this->getViewFileUrl('Baniwal_Blog::media/images/twitter-off.png') ?>" align="middle"
+                     alt="<?php echo $block->escapeHtml($author->getName()); ?>"/>
+            <?php endif; ?>
+            <div class="baniwal-clear"></div>
+        </div>
+        <div class="author-border col-xs-12"></div>
+	</div>
+</div>
+<?php endif; ?>

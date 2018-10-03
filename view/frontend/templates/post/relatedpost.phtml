@@ -1,0 +1,9 @@
+<?php $posts = $block->getRelatedPostList(); ?>
+<?php if ($posts): ?>
+    <h2><?php echo $posts->getSize() ? __('Related Posts') : __('No Related Posts') ?></h2>
+    <ul>
+		<?php foreach ($posts as $post): ?>
+            <li><a href="<?php echo $post->getUrl() ?>"><?php echo $post->getName(); ?></a> </li>
+		<?php endforeach; ?>
+	</ul>
+<?php endif; ?>

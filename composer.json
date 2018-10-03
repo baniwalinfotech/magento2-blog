@@ -1,0 +1,18 @@
+{
+  "name": "baniwal/magento-2-blog-extension",
+  "description": "Magento 2 Blog extension",
+  "type": "magento2-module",
+  "version": "3.0.2",
+  "license": "proprietary",
+  "keywords": [
+      "magento 2", "baniwal", "blog", "magento 2 blog", "magento2"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Baniwal\\Blog\\": ""
+    }
+  }
+}

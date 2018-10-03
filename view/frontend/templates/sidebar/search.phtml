@@ -1,0 +1,54 @@
+<div class="baniwalblog-search">
+    <div class="field search">
+        <label class="label" for="baniwalblog-search-box" data-role="minisearch-label">
+            <span><?php echo __('Search'); ?></span>
+        </label>
+        <div class="control">
+            <input id="baniwalblog-search-box"
+                   type="text"
+                   name="query"
+                   value="<?php echo $this->getRequest()->getParam('query') ?>"
+                   placeholder="<?php echo __('Search blogs here...'); ?>"
+                   class="input-text"
+                   role="combobox"
+                   aria-haspopup="false"
+                   aria-autocomplete="both"
+            />
+        </div>
+    </div>
+    <div class="actions">
+        <button type="submit" title="<?php echo __('Search') ?>" class="action search">
+            <i class="fa fa-search" aria-hidden="true" style="font-size: 16px;margin-top: 5px;"></i>
+        </button>
+    </div>
+</div>
+<script>
+    require(['jquery', 'baniwalDevbridgeAutocomplete'], function ($) {
+        var visibleImage = <?php echo $block->getSidebarConfig('search/show_image'); ?>;
+        $('#baniwalblog-search-box').autocomplete({
+            lookup: <?php echo $block->getSearchBlogData();?>,
+            lookupLimit: <?php echo $block->getSidebarConfig('search/search_limit') ?: 10; ?>,
+            maxHeight: 2000,
+            minChars: <?php echo $block->getSidebarConfig('search/min_chars') ?: 1; ?>,
+            autoSelectFirst: true,
+            showNoSuggestionNotice: true,
+            triggerSelectOnValidInput: false,
+            onSelect: function (suggestion) {
+                window.location.href = suggestion.url;
+            },
+            formatResult: function (suggestion, currentValue) {
+                var additionClass = '';
+                var html = "<div class='baniwalblog-suggestion'>";
+                if (visibleImage) {
+                    html += "<div class='baniwalblog-suggestion-left'><img class='img-responsive' src='" + suggestion.image + "' /></div>";
+                    additionClass = 'image-visible';
+                }
+                html += "<div class='baniwalblog-suggestion-right " + additionClass + "'>" +
+                    "<div class='baniwalblog-product-line baniwalblog-product-name'>" + suggestion.value + "</div>" +
+                    "<div class='baniwalblog-product-des'><p class='baniwalblog-short-des'>" + suggestion.desc + "</p></div></div></div>";
+
+                return html;
+            }
+        });
+    });
+</script>

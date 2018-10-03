@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="baniwalblog_design" />
+    <body>
+        <referenceContainer name="content">
+            <block class="Baniwal\Blog\Block\Author\Listpost" name="baniwalblog.post.list" template="post/list.phtml" />
+        </referenceContainer>
+        <referenceContainer name="blog.sidebar.main">
+            <block class="Baniwal\Blog\Block\Author\Widget" after="baniwalblog.sidebar.mostview" name="baniwalblog.view.sidebar.author" template="author/widget.phtml"/>
+        </referenceContainer>
+        <referenceBlock name="baniwalblog.sidebar.category" remove="true"/>
+        <referenceBlock name="baniwalblog.sidebar.monthly" remove="true"/>
+        <referenceBlock name="baniwalblog.sidebar.topic" remove="true"/>
+        <referenceBlock name="baniwalblog.sidebar.tag" remove="true"/>
+    </body>
+</page>

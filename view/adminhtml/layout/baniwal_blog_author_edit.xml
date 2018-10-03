@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Baniwal\Blog\Block\Adminhtml\Author\Edit" name="baniwal_blog_author_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Baniwal\Blog\Block\Adminhtml\Author\Edit\Tabs" name="baniwal_blog_author_tabs">
+                <block class="Baniwal\Blog\Block\Adminhtml\Author\Edit\Tab\Author" name="baniwal_blog_author_edit_tab_author"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">author</argument>
+                    <argument name="block" xsi:type="string">baniwal_blog_author_edit_tab_author</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

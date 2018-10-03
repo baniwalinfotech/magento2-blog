@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Baniwal_Blog::blog" title="Blog" module="Baniwal_Blog" sortOrder="51" resource="Baniwal_Blog::blog"/>
+        <add id="Baniwal_Blog::post" title="Manage Posts" module="Baniwal_Blog" sortOrder="10" action="baniwal_blog/post" resource="Baniwal_Blog::post" parent="Baniwal_Blog::blog"/>
+        <add id="Baniwal_Blog::tag" title="Manage Tags" module="Baniwal_Blog" sortOrder="20" action="baniwal_blog/tag" resource="Baniwal_Blog::tag" parent="Baniwal_Blog::blog"/>
+        <add id="Baniwal_Blog::topic" title="Manage Topics" module="Baniwal_Blog" sortOrder="30" action="baniwal_blog/topic" resource="Baniwal_Blog::topic" parent="Baniwal_Blog::blog"/>
+        <add id="Baniwal_Blog::category" title="Categories" module="Baniwal_Blog" sortOrder="40" action="baniwal_blog/category" resource="Baniwal_Blog::category" parent="Baniwal_Blog::blog"/>
+        <add id="Baniwal_Blog::author" title="Author Information" module="Baniwal_Blog" sortOrder="50" action="baniwal_blog/author/edit" resource="Baniwal_Blog::author" parent="Baniwal_Blog::blog"/>
+        <add id="Baniwal_Blog::comment" title="Manage Comments" module="Baniwal_Blog" sortOrder="60" action="baniwal_blog/comment" resource="Baniwal_Blog::comment" parent="Baniwal_Blog::blog"/>
+        <add id="Baniwal_Blog::import" title="Import" module="Baniwal_Blog" sortOrder="65" action="baniwal_blog/import/edit" resource="Baniwal_Blog::import" parent="Baniwal_Blog::blog"/>
+        <add id="Baniwal_Blog::configuration" title="Configuration" module="Baniwal_Blog" sortOrder="1000" action="adminhtml/system_config/edit/section/blog" resource="Baniwal_Blog::configuration" parent="Baniwal_Blog::blog"/>
+    </menu>
+</config>

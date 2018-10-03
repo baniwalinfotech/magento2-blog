@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Baniwal\Blog\Block\Adminhtml\Tag\Edit" name="baniwal_blog_tag_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Baniwal\Blog\Block\Adminhtml\Tag\Edit\Tabs" name="baniwal_blog_tag_tabs">
+                <block class="Baniwal\Blog\Block\Adminhtml\Tag\Edit\Tab\Tag" name="baniwal_blog_tag_edit_tab_tag"/>
+                <block class="Baniwal\Blog\Block\Adminhtml\Tag\Edit\Tab\Post" name="baniwal_blog_tag_edit_tab_post"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">tag</argument>
+                    <argument name="block" xsi:type="string">baniwal_blog_tag_edit_tab_tag</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">post</argument>
+                    <argument name="block" xsi:type="string">baniwal_blog_tag_edit_tab_post</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

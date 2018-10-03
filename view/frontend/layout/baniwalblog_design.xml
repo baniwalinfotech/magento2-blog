@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Baniwal_Blog::css/grid-baniwal.css"/>
+        <css src="Baniwal_Blog::css/font-awesome.min.css"/>
+    </head>
+    <body>
+        <referenceContainer name="columns">
+            <container name="div.sidebar.main" htmlTag="div" htmlClass="sidebar sidebar-main" after="main">
+                <container name="blog.sidebar.main" as="sidebar_main" label="Sidebar Main">
+                    <block class="Baniwal\Blog\Block\Sidebar\Search" name="baniwalblog.sidebar.search" template="sidebar/search.phtml" ifconfig="blog/sidebar/search/enable_search" />
+                    <block class="Baniwal\Blog\Block\Sidebar\MostView" name="baniwalblog.sidebar.mostview" template="sidebar/mostview.phtml"/>
+                    <block class="Baniwal\Blog\Block\Category\Widget" name="baniwalblog.sidebar.category" template="category/widget.phtml"/>
+                    <block class="Baniwal\Blog\Block\MonthlyArchive\Widget" name="baniwalblog.sidebar.monthly" template="monthly/widget.phtml"/>
+                    <block class="Baniwal\Blog\Block\Topic\Widget" name="baniwalblog.sidebar.topic" template="topic/widget.phtml"/>
+                    <block class="Baniwal\Blog\Block\Tag\Widget" name="baniwalblog.sidebar.tag" template="tag/widget.phtml"/>
+                </container>
+            </container>
+        </referenceContainer>
+        <referenceBlock name="head.additional">
+            <block class="Baniwal\Blog\Block\Design" name="baniwalblog.design" template="Baniwal_Blog::design.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

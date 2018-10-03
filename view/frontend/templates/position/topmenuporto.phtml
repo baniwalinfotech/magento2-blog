@@ -1,0 +1,9 @@
+<?php
+$helper = $this->helper('Baniwal\Blog\Helper\Data');
+if ($helper->isEnabled() && $helper->getBlogConfig('general/toplinks')): ?>
+    <li class="ui-menu-item level0 fullwidth">
+        <a href="<?php echo $helper->getBlogUrl('') ?>" class="level-top">
+            <span><?php echo $helper->getBlogConfig('general/name') ?: __('Blog') ?></span>
+        </a>
+    </li>
+<?php endif; ?>

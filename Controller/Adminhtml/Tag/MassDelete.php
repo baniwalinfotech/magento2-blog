@@ -1,0 +1,48 @@
+<?php
+
+namespace Baniwal\Blog\Controller\Adminhtml\Tag;
+
+use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
+use Magento\Framework\Controller\ResultFactory;
+use Magento\Ui\Component\MassAction\Filter;
+use Baniwal\Blog\Model\ResourceModel\Tag\CollectionFactory;
+
+class MassDelete extends Action
+{
+    /**
+     * @var \Magento\Ui\Component\MassAction\Filter
+     */
+    public $filter;
+
+    public $collectionFactory;
+
+    public function __construct(
+        Context $context,
+        Filter $filter,
+        CollectionFactory $collectionFactory
+    )
+    {
+        $this->filter = $filter;
+        $this->collectionFactory = $collectionFactory;
+
+        parent::__construct($context);
+    }
+
+    public function execute()
+    {
+        $collection = $this->filter->getCollection($this->collectionFactory->create());
+
+        try {
+            $collection->walk('delete');
+            $this->messageManager->addSuccess(__('Tags has been deleted.'));
+        } catch (\Exception $e) {
+            $this->messageManager->addSuccess(__('Something wrong when delete Tag.'));
+        }
+
+        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
+        $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
+
+        return $resultRedirect->setPath('*/*/');
+    }
+}

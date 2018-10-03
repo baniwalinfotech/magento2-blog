@@ -1,0 +1,58 @@
+<div class="baniwal-blog-rss">
+    <a href="<?php echo $block->getRssUrl('post/rss') ?>" class="bb-rss-icon">
+        <img src="<?php echo $this->getViewFileUrl('Baniwal_Blog::media/images/rss.png') ?>" width="16px">
+    </a>
+</div>
+<div class="post-list-content" id="baniwalblog-list-container">
+    <?php $postCollection = $block->getPostCollection(); ?>
+    <?php if ($postCollection && $postCollection->getSize()) : ?>
+        <div class="post-list-body">
+            <?php $i = 1 ?>
+             <?php /** @var \Baniwal\Blog\Model\Post $post */ foreach ($postCollection as $post) :?>
+                <div class="post-list-item col-baniwal<?php echo $block->isGridView() ? ' post-item-grid baniwal-6 baniwal-xs-12' : ' post-item-list baniwal-12'; ?>">
+                    <div class="post-item-wraper">
+                        <?php if ($post->getImage()) : ?>
+                            <div class="post-image">
+                                <a href="<?php echo $post->getUrl() ?>">
+                                    <img class="img-responsive"
+                                         src="<?php echo $block->resizeImage($post->getImage(), '400x'); ?>"
+                                         alt="<?php echo $block->escapeHtml($post->getName()); ?>"/>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+                        <div class="post-info-wraper">
+                            <h2 class="baniwal-post-title">
+                                <a class="post-link-title" title="<?php echo $block->escapeHtml($post->getName()); ?>" href="<?php echo $post->getUrl() ?>">
+                                    <?php echo $post->getName();?>
+                                </a>
+                            </h2>
+                            <div class="baniwal-post-info">
+                                <?php echo $block->getPostInfo($post); ?>
+                            </div>
+                            <div class="post-short-description">
+                                <p><?php echo $post->getShortDescription(); ?></p>
+                            </div>
+                            <div class="baniwal-clearfix"></div>
+                            <div class="baniwal-post-meta-info baniwal-alignright">
+                                <div class="actions">
+                                    <a class="baniwal-read-more" href="<?php echo $post->getUrl(); ?>" title="<?php echo __('Read More'); ?>">
+                                        <?php echo __('Read More'); ?>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php if($i++ % 2 == 0): ?>
+                    <div class="baniwal-clear"></div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <div class="baniwal-clear"></div>
+        </div>
+        <?php echo $block->getPagerHtml() ?>
+    <?php else: ?>
+        <?php echo __('There are no posts at this moment'); ?>
+    <?php endif; ?>
+    <?php echo $this->getChildHtml('additional');?>
+</div>
+
